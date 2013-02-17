@@ -3,8 +3,7 @@ NLog Contrib
 
 Community contributions to NLog.
 
-Adding a new target
-===================
+##Adding a new target
 
 It’s easy. Just put the target in a DLL and reference it from the the config file using the clause as described here.
 
