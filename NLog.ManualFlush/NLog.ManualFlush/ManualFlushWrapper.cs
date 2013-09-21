@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace NLog.ManualFlush
 {
+    [Target("ManualFlush")]
     public class ManualFlushWrapper : WrapperTargetBase
     {
         private readonly IList<AsyncLogEventInfo> logs = new List<AsyncLogEventInfo>();
