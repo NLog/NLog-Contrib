@@ -24,5 +24,10 @@ namespace NLog.ManualFlush
             logs.Clear();
             base.FlushAsync(asyncContinuation);
         }
+        
+        public void EmptyLogs()
+		{
+			logs.Clear();
+		}
     }
 }
