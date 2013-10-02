@@ -1,4 +1,4 @@
-cd _packages
+cd _output
 nuget.exe update -self
 ECHO Y | DEL *.nupkg
 
