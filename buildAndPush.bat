@@ -2,6 +2,9 @@ cd _output
 nuget.exe update -self
 ECHO Y | DEL *.nupkg
 
+#Restore packages in solution
+nuget.exe restore "..\Nlog-Contrib.sln"
+
 #NOTE - Using an account for nlog-contrib@meinershagen.net to publish to NuGet.org.  This can be changed in the future.
 nuget.exe setApiKey 11967121-c94f-4d54-9461-c2e441758bc0
 
