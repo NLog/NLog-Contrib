@@ -80,6 +80,7 @@ publish
 
 # NuGet Packages Directory
 packages
+.nuget/NuGet.exe.old
 
 # NuGet Build and Push Directory
 _output

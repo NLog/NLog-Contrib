@@ -10,6 +10,8 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
+
+using System;
 using Elmah;
 using NLog.Targets;
 
@@ -34,11 +36,16 @@ namespace NLog.Elmah
             var logMessage = Layout.Render(logEvent);
 
             var error = logEvent.Exception == null ? new Error() : new Error(logEvent.Exception);
+            var type = error.Exception == null ? string.Empty : error.Exception.GetType().FullName;
+            error.Type = type;
             error.Message = logMessage;
-            error.Type = logEvent.Level.ToString();
-            error.Time = logEvent.TimeStamp;
+            error.Time = GetCurrentDateTime == null ? logEvent.TimeStamp : GetCurrentDateTime();
+            error.HostName = Environment.MachineName;
+            error.Detail = logEvent.Exception == null ? logMessage : logEvent.Exception.StackTrace;
 
             _errorLog.Log(error);
         }
+
+        public Func<DateTime> GetCurrentDateTime { get; set; }
     }
 }
