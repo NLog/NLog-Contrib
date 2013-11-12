@@ -22,6 +22,8 @@ namespace NLog.Elmah
     {
         private readonly ErrorLog _errorLog;
 
+        public bool LogLevelAsType { get; set; }
+
         public ElmahTarget()
             : this (ErrorLog.GetDefault(null))
         {}
@@ -29,6 +31,7 @@ namespace NLog.Elmah
         public ElmahTarget(ErrorLog errorLog)
         {
             _errorLog = errorLog;
+            LogLevelAsType = false;
         }
 
         protected override void Write(LogEventInfo logEvent)
@@ -36,7 +39,8 @@ namespace NLog.Elmah
             var logMessage = Layout.Render(logEvent);
 
             var error = logEvent.Exception == null ? new Error() : new Error(logEvent.Exception);
-            var type = error.Exception == null ? string.Empty : error.Exception.GetType().FullName;
+            var type = error.Exception != null ? error.Exception.GetType().FullName :
+                                                    LogLevelAsType ? logEvent.Level.Name : string.Empty;
             error.Type = type;
             error.Message = logMessage;
             error.Time = GetCurrentDateTime == null ? logEvent.TimeStamp : GetCurrentDateTime();
