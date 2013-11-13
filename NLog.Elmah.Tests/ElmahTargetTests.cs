@@ -22,13 +22,18 @@ namespace NLog.Elmah.Tests
     public class given_log_event_with_no_exception_when_logging_info
     {
         private ErrorLog _errorLog;
+        private readonly DateTime _now = new DateTime(2013, 10, 8, 19, 5, 0);
 
         [TestFixtureSetUp]
         public void Init()
         {
             _errorLog = new MemoryErrorLog(1);
             var loggingConfiguration = new LoggingConfiguration();
-            var target = new ElmahTarget(_errorLog) {Layout = new SimpleLayout("${level}-${message}")};
+            var target = new ElmahTarget(_errorLog)
+                {
+                    Layout = new SimpleLayout("${level}-${message}"),
+                    GetCurrentDateTime = () => _now
+                };
 
             loggingConfiguration.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
             loggingConfiguration.AddTarget("Elmah", target);
@@ -51,10 +56,17 @@ namespace NLog.Elmah.Tests
         }
 
         [Test]
-        public void should_set_log_type()
+        public void should_set_detail_to_rendered_message()
         {
             var error = _errorLog.GetFirstError();
-            Assert.That(error.Type, Is.EqualTo("Info"));
+            Assert.That(error.Detail, Is.EqualTo("Info-This is an info message."));
+        }
+
+        [Test]
+        public void should_set_log_type_to_empty_string()
+        {
+            var error = _errorLog.GetFirstError();
+            Assert.That(error.Type, Is.Empty);
         }
 
         [Test]
@@ -62,13 +74,6 @@ namespace NLog.Elmah.Tests
         {
             var error = _errorLog.GetFirstError();
             Assert.That(error.Exception, Is.Null);
-        }
-
-        [Test]
-        public void should_not_set_detail()
-        {
-            var error = _errorLog.GetFirstError();
-            Assert.That(error.Detail, Is.Empty);
         }
 
         [Test]
@@ -82,7 +87,14 @@ namespace NLog.Elmah.Tests
         public void should_set_time_to_now()
         {
             var error = _errorLog.GetFirstError();
-            Assert.That(error.Time, Is.EqualTo(DateTime.Now));
+            Assert.That(error.Time, Is.EqualTo(_now));
+        }
+
+        [Test]
+        public void should_set_host_name_to_machine_name()
+        {
+            var error = _errorLog.GetFirstError();
+            Assert.That(error.HostName, Is.EqualTo(Environment.MachineName));
         }
     }
 
@@ -91,13 +103,18 @@ namespace NLog.Elmah.Tests
     {
         private ErrorLog _errorLog;
         private Exception _exception;
+        private readonly DateTime _now = new DateTime(2013, 10, 8, 19, 5, 0);
 
         [TestFixtureSetUp]
         public void Init()
         {
             _errorLog = new MemoryErrorLog(1);
             var loggingConfiguration = new LoggingConfiguration();
-            var target = new ElmahTarget(_errorLog) { Layout = new SimpleLayout("${level}-${message}") };
+            var target = new ElmahTarget(_errorLog)
+                {
+                    Layout = new SimpleLayout("${level}-${message}"),
+                    GetCurrentDateTime = () => _now
+                };
 
             loggingConfiguration.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
             loggingConfiguration.AddTarget("Elmah", target);
@@ -112,7 +129,24 @@ namespace NLog.Elmah.Tests
 
             _exception = new ArgumentException();
             _exception.Source = "SetUp";
-            logger.ErrorException("This is an error message.", _exception);
+
+            try
+            {
+                new Thrower().Throw(_exception);
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorException("This is an error message.", ex);
+            }
+            
+        }
+
+        public class Thrower
+        {
+            public void Throw(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [Test]
@@ -123,10 +157,10 @@ namespace NLog.Elmah.Tests
         }
 
         [Test]
-        public void should_set_log_type()
+        public void should_set_log_type_to_full_name_of_exception_type()
         {
             var error = _errorLog.GetFirstError();
-            Assert.That(error.Type, Is.EqualTo("Error"));
+            Assert.That(error.Type, Is.EqualTo("System.ArgumentException"));
         }
 
         [Test]
@@ -137,10 +171,10 @@ namespace NLog.Elmah.Tests
         }
 
         [Test]
-        public void should_set_detail()
+        public void should_set_detail_to_stack_trace()
         {
             var error = _errorLog.GetFirstError();
-            Assert.That(error.Detail, Is.EqualTo(_exception.ToString()));
+            Assert.That(error.Detail, Is.EqualTo(_exception.StackTrace));
         }
 
         [Test]
@@ -154,7 +188,14 @@ namespace NLog.Elmah.Tests
         public void should_set_time_to_now()
         {
             var error = _errorLog.GetFirstError();
-            Assert.That(error.Time, Is.EqualTo(DateTime.Now));
+            Assert.That(error.Time, Is.EqualTo(_now));
+        }
+
+        [Test]
+        public void should_set_host_name_to_machine_name()
+        {
+            var error = _errorLog.GetFirstError();
+            Assert.That(error.HostName, Is.EqualTo(Environment.MachineName));
         }
     }
 }
