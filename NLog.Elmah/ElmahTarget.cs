@@ -39,8 +39,9 @@ namespace NLog.Elmah
             var logMessage = Layout.Render(logEvent);
 
             var error = logEvent.Exception == null ? new Error() : new Error(logEvent.Exception);
-            var type = error.Exception != null ? error.Exception.GetType().FullName :
-                                                    LogLevelAsType ? logEvent.Level.Name : string.Empty;
+            var type = error.Exception != null
+                           ? error.Exception.GetType().FullName
+                           : LogLevelAsType ? logEvent.Level.Name : string.Empty;
             error.Type = type;
             error.Message = logMessage;
             error.Time = GetCurrentDateTime == null ? logEvent.TimeStamp : GetCurrentDateTime();

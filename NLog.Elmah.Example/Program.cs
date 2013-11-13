@@ -10,6 +10,9 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
+
+using System;
+
 namespace NLog.Elmah.Example
 {
     class Program
@@ -18,7 +21,7 @@ namespace NLog.Elmah.Example
 
         static void Main(string[] args)
         {
-            Logger.Error("This is a message from the Program type.");
+            Logger.ErrorException("This is a message from the Program type.", new ArgumentException());
             var service = new Service();
             service.Execute();
         }

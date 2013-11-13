@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ElmahTargetTestsWithLogLevelAsType.cs" />
     <Compile Include="ElmahTargetTests.cs" />
     <Compile Include="ErrorLogExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
