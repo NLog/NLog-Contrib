@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.ManualFlush", "NLog.Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.ManualFlush.Tests", "NLog.ManualFlush.Tests\NLog.ManualFlush.Tests.csproj", "{4F85E4C4-F0D7-43B8-B42F-F55F3AFCCAB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogContrib", "NLogContrib\NLogContrib.csproj", "{1EF270BC-EC8C-444B-9D05-B2F6C234F704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogContrib.Tests", "NLogContrib.Tests\NLogContrib.Tests.csproj", "{833FD6B8-32F7-475D-B67C-939A05682978}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,14 @@ Global
 		{4F85E4C4-F0D7-43B8-B42F-F55F3AFCCAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F85E4C4-F0D7-43B8-B42F-F55F3AFCCAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F85E4C4-F0D7-43B8-B42F-F55F3AFCCAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EF270BC-EC8C-444B-9D05-B2F6C234F704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF270BC-EC8C-444B-9D05-B2F6C234F704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF270BC-EC8C-444B-9D05-B2F6C234F704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF270BC-EC8C-444B-9D05-B2F6C234F704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{833FD6B8-32F7-475D-B67C-939A05682978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{833FD6B8-32F7-475D-B67C-939A05682978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{833FD6B8-32F7-475D-B67C-939A05682978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{833FD6B8-32F7-475D-B67C-939A05682978}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
