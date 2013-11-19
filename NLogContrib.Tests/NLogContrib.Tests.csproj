@@ -48,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LayoutRenderers\MDLCTests.cs" />
+    <Compile Include="LayoutRenderers\MdlcLayoutRendererTests.cs" />
+    <Compile Include="MappedDiagnosticsLogicalContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

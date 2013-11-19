@@ -1,44 +1,48 @@
-﻿using System;
+﻿// Copyright 2013 Kim Christensen, Todd Meinershagen, et. al.
+//  
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
+// this file except in compliance with the License. You may obtain a copy of the 
+// License at 
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0 
+// 
+// Unless required by applicable law or agreed to in writing, software distributed 
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+// specific language governing permissions and limitations under the License.
+
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLogContrib
 {
     /// <summary>
-    /// Mapped Diagnostics Logical Context - a logical context structure that keeps a dictionary
-    /// of strings and provides methods to output them in layouts.
+    /// Async version of Mapped Diagnostics Context - a logical context structure that keeps a dictionary
+    /// of strings and provides methods to output them in layouts.  Allows for maintaining state across
+    /// asynchronous tasks and call contexts.
     /// Mostly for compatibility with log4net (log4net.ThreadLogicalContext).
     /// </summary>
+    /// <remarks>
+    /// Ideally, these changes should be incorporated as a new version of the MappedDiagnosticsContext class in the original
+    /// NLog library so that state can be maintained for multiple threads in asynchronous situations.
+    /// </remarks>
     public static class MappedDiagnosticsLogicalContext
     {
-        private const string LogicalContextDictKey = "NLog.MappedDiagnosticsLogicalContext";
+        private const string LogicalThreadDictionaryKey = "NLog.AsyncableMappedDiagnosticsContext";
 
-        private static IDictionary<string, string> LogicalContextDict
+        private static IDictionary<string, string> LogicalThreadDictionary
         {
             get
             {
-                var dict = CallContext.LogicalGetData(LogicalContextDictKey) as ConcurrentDictionary<string, string>;
-                if (dict == null)
+                var dictionary = CallContext.LogicalGetData(LogicalThreadDictionaryKey) as ConcurrentDictionary<string, string>;
+                if (dictionary == null)
                 {
-                    dict = new ConcurrentDictionary<string, string>();
-                    CallContext.LogicalSetData(LogicalContextDictKey, dict);
+                    dictionary = new ConcurrentDictionary<string, string>();
+                    CallContext.LogicalSetData(LogicalThreadDictionaryKey, dictionary);
                 }
-                return dict;
+                return dictionary;
             }
-        }
-
-        /// <summary>
-        /// Sets the current logical context item to the specified value.
-        /// </summary>
-        /// <param name="item">Item name.</param>
-        /// <param name="value">Item value.</param>
-        public static void Set(string item, string value)
-        {
-            LogicalContextDict[item] = value;
         }
 
         /// <summary>
@@ -50,12 +54,22 @@ namespace NLogContrib
         {
             string s;
 
-            if (!LogicalContextDict.TryGetValue(item, out s))
+            if (!LogicalThreadDictionary.TryGetValue(item, out s))
             {
                 s = string.Empty;
             }
 
             return s;
+        }
+
+        /// <summary>
+        /// Sets the current logical context item to the specified value.
+        /// </summary>
+        /// <param name="item">Item name.</param>
+        /// <param name="value">Item value.</param>
+        public static void Set(string item, string value)
+        {
+            LogicalThreadDictionary[item] = value;
         }
 
         /// <summary>
@@ -65,7 +79,7 @@ namespace NLogContrib
         /// <returns>A boolean indicating whether the specified item exists in current thread MDC.</returns>
         public static bool Contains(string item)
         {
-            return LogicalContextDict.ContainsKey(item);
+            return LogicalThreadDictionary.ContainsKey(item);
         }
 
         /// <summary>
@@ -74,7 +88,7 @@ namespace NLogContrib
         /// <param name="item">Item name.</param>
         public static void Remove(string item)
         {
-            LogicalContextDict.Remove(item);
+            LogicalThreadDictionary.Remove(item);
         }
 
         /// <summary>
@@ -82,7 +96,7 @@ namespace NLogContrib
         /// </summary>
         public static void Clear()
         {
-            LogicalContextDict.Clear();
+            LogicalThreadDictionary.Clear();
         }
     }
 }
