@@ -12,11 +12,10 @@
 // specific language governing permissions and limitations under the License.
 
 using System.Text;
-using NLog;
 using NLog.Config;
 using NLog.LayoutRenderers;
 
-namespace NLogContrib.LayoutRenderers
+namespace NLog.Contrib.LayoutRenderers
 {
     /// <summary>
     /// Mapped Diagnostic Logical Context item (based on CallContext).

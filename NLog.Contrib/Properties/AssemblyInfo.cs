@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NLogContrib")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("NLog.Contrib")]
+[assembly: AssemblyDescription("Community contributed additions to NLog.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NLogContrib")]
-[assembly: AssemblyCopyright("Copyright © 2013")]
+[assembly: AssemblyCompany("Kim Christensen, Todd Meinershagen")]
+[assembly: AssemblyProduct("NLog.Contrib")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("23b80d3d-7be2-42bd-a04d-11051c2b6930")]
+[assembly: Guid("6f44e4d6-1417-454f-96c1-2a313db825c1")]
 
 // Version information for an assembly consists of the following four values:
 //

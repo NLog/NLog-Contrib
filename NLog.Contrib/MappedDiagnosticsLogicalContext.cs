@@ -15,7 +15,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 
-namespace NLogContrib
+namespace NLog.Contrib
 {
     /// <summary>
     /// Async version of Mapped Diagnostics Context - a logical context structure that keeps a dictionary
@@ -52,14 +52,14 @@ namespace NLogContrib
         /// <returns>The item value of string.Empty if the value is not present.</returns>
         public static string Get(string item)
         {
-            string s;
+            string value;
 
-            if (!LogicalThreadDictionary.TryGetValue(item, out s))
+            if (!LogicalThreadDictionary.TryGetValue(item, out value))
             {
-                s = string.Empty;
+                value = string.Empty;
             }
 
-            return s;
+            return value;
         }
 
         /// <summary>

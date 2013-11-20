@@ -14,7 +14,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace NLogContrib.Tests
+namespace NLog.Contrib.Tests
 {
     [TestFixture]
     public class MappedDiagnosticsLogicalContextTests

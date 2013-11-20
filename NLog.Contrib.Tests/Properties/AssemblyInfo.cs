@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NLogContrib.Tests")]
+[assembly: AssemblyTitle("NLog.Contrib.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Agilior")]
-[assembly: AssemblyProduct("NLogContrib.Tests")]
-[assembly: AssemblyCopyright("Copyright © Agilior 2013")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("NLog.Contrib.Tests")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("495fef42-785a-47eb-a2ee-e8707a943c58")]
+[assembly: Guid("9c658b53-4bbe-4b39-851f-d1d2b364119a")]
 
 // Version information for an assembly consists of the following four values:
 //

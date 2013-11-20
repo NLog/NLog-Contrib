@@ -12,13 +12,12 @@
 // specific language governing permissions and limitations under the License.
 
 using System.Xml.Linq;
-using NLog;
 using NLog.Config;
+using NLog.Contrib.LayoutRenderers;
 using NLog.Targets;
-using NLogContrib.LayoutRenderers;
 using NUnit.Framework;
 
-namespace NLogContrib.Tests.LayoutRenderers
+namespace NLog.Contrib.Tests.LayoutRenderers
 {
     [TestFixture]
     public class MdlcLayoutRendererTests
