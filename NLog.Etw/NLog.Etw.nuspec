@@ -13,11 +13,11 @@
     <releaseNotes>Community contributed custom target for NLog.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>nlog target etw</tags>
+    <dependencies>
+	    <dependency id="NLog" version="2.1.0" />
+	  </dependencies>
   </metadata>
   <files>
     <file src='bin\release\*.dll' target="lib\net45" />
   </files>
-  <dependencies>
-    <dependency id="NLog" version="2.1.0" />
-  </dependencies>
 </package>
