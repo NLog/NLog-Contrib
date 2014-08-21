@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>NLog.ManualFlush</id>
     <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <title>NLog.ManualFlush</title>
+    <authors>NLog</authors>
+    <owners>NLog</owners>
     <licenseUrl>https://github.com/NLog/NLog-Contrib/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/NLog/NLog-Contrib</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Allows you to control when NLog flushes.</description>
     <releaseNotes>Community contributed custom target for NLog.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>nlog target flush manual wrapper</tags>
   </metadata>
+  <files>
+  	<file src='bin\release\*.dll' target="lib\net45" />
+  </files>
+  <dependencies>
+    <dependency id="NLog" version="2.0.1.2" />
+  </dependencies>
 </package>
