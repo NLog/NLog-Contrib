@@ -12,6 +12,8 @@
 // specific language governing permissions and limitations under the License.
 
 using System;
+using System.Web;
+
 using Elmah;
 using NLog.Targets;
 
@@ -38,7 +40,8 @@ namespace NLog.Elmah
         {
             var logMessage = Layout.Render(logEvent);
 
-            var error = logEvent.Exception == null ? new Error() : new Error(logEvent.Exception);
+            var httpContext = HttpContext.Current;
+            var error = logEvent.Exception == null ? new Error() : httpContext != null ? new Error(logEvent.Exception, httpContext) : new Error(logEvent.Exception);
             var type = error.Exception != null
                            ? error.Exception.GetType().FullName
                            : LogLevelAsType ? logEvent.Level.Name : string.Empty;
