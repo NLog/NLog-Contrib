@@ -134,19 +134,19 @@ namespace NLog.Contrib.Tests
             const string valueForLogicalThread2 = "ValueForTask2";
             const string valueForLogicalThread3 = "ValueForTask3";
 
-            var task1 = Task.Run(() =>
+            var task1 = Task.Factory.StartNew(() =>
                 {
                     MappedDiagnosticsLogicalContext.Set(key, valueForLogicalThread1);
                     return MappedDiagnosticsLogicalContext.Get(key);
                 });
 
-            var task2 = Task.Run(() =>
+            var task2 = Task.Factory.StartNew(() =>
                 {
                     MappedDiagnosticsLogicalContext.Set(key, valueForLogicalThread2);
                     return MappedDiagnosticsLogicalContext.Get(key);
                 });
 
-            var task3 = Task.Run(() =>
+            var task3 = Task.Factory.StartNew(() =>
             {
                 MappedDiagnosticsLogicalContext.Set(key, valueForLogicalThread3);
                 return MappedDiagnosticsLogicalContext.Get(key);
