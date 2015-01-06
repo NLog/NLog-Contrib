@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB5C7E87-C5F4-43FC-AC71-BE0A22F5B932}</ProjectGuid>
+    <ProjectGuid>{77ED37BE-37DD-4C16-B027-AD6B0EDE0B4F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NLog.Windows.Forms</RootNamespace>
-    <AssemblyName>NLog.Windows.Forms</AssemblyName>
+    <RootNamespace>NLog.Windows.Forms.Tests</RootNamespace>
+    <AssemblyName>NLog.Windows.Forms.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -43,18 +43,22 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormControlTarget.cs" />
-    <Compile Include="FormHelper.cs" />
+    <Compile Include="RichTextBoxTargetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RichTextBoxTarget.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\NLog.ico" />
+    <ProjectReference Include="..\NLog.Windows.Forms\NLog.Windows.Forms.csproj">
+      <Project>{eb5c7e87-c5f4-43fc-ac71-be0a22f5b932}</Project>
+      <Name>NLog.Windows.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

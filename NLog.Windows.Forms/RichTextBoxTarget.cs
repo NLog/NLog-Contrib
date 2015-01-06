@@ -194,14 +194,14 @@ namespace NLog.Windows.Forms
         /// <summary>
         /// Gets or sets the form to log to.
         /// </summary>
-        internal Form TargetForm { get; set; }
+        public Form TargetForm { get; set; }
 
         /// <summary>
         /// Gets or sets the rich text box to log to.
         /// </summary>
-        internal RichTextBox TargetRichTextBox { get; set; }
+        public RichTextBox TargetRichTextBox { get; set; }
 
-        internal bool CreatedForm { get; set; }
+        public bool CreatedForm { get; set; }
 
         /// <summary>
         /// Initializes the target. Can be used by inheriting classes
