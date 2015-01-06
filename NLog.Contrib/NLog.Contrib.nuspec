@@ -13,5 +13,8 @@
     <releaseNotes>Community contributed additions to NLog.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>nlog context diagnostics</tags>
+    <dependencies>
+      <dependency id="NLog" version="3.2.0" />
+    </dependencies>
   </metadata>
 </package>
