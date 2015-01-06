@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NLog.Windows.Forms</id>
+    <version>$version$</version>
+    <title>NLog.Windows.Forms</title>
+    <authors>NLog</authors>
+    <owners>NLog</owners>
+    <licenseUrl>https://github.com/NLog/NLog-Contrib/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/NLog/NLog-Contrib</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains the FormControl and RichTextBox targets for Windows Forms.</description>
+    <releaseNotes>Community contributed custom target for NLog.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>nlog target forms</tags>
+    <dependencies>
+      <dependency id="NLog" version="3.2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+  	<file src='bin\release\*.dll' target="lib\net35" />
+  </files>
+</package>
