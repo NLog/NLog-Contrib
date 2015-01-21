@@ -22,7 +22,7 @@ Configuration file example:
 </nlog>
 ```
 
-You can also use TargetFactory.AddTarget() to register your target programmatically.
+You can also use `TargetFactory.AddTarget()` to register your target programmatically.
 Just be sure to do it at the very beginning of your program before any log messages are written.
 It should be possible to reference your EXE using the ```<extensions />``` clause.
 
