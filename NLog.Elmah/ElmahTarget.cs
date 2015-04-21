@@ -41,10 +41,16 @@ namespace NLog.Elmah
             var logMessage = Layout.Render(logEvent);
 
             var httpContext = HttpContext.Current;
-            var error = logEvent.Exception == null ? new Error() : httpContext != null ? new Error(logEvent.Exception, httpContext) : new Error(logEvent.Exception);
+            var error = logEvent.Exception == null 
+				? new Error() 
+				: httpContext != null 
+					? new Error(logEvent.Exception, httpContext) 
+					: new Error(logEvent.Exception);
+
             var type = error.Exception != null
                            ? error.Exception.GetType().FullName
                            : LogLevelAsType ? logEvent.Level.Name : string.Empty;
+
             error.Type = type;
             error.Message = logMessage;
             error.Time = GetCurrentDateTime == null ? logEvent.TimeStamp : GetCurrentDateTime();
