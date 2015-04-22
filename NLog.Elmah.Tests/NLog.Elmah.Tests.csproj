@@ -45,15 +45,23 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ElmahTargetTests.cs" />
+    <Compile Include="ElmahTargetTests\ElmahTargetTests.cs" />
+    <Compile Include="ElmahTargetTests\given_target_with_loglevelastype_not_set.cs" />
+    <Compile Include="ElmahTargetTests\given_target_with_loglevelastype_not_set_and_log_event_with_no_exception_when_logging_info.cs" />
+    <Compile Include="ElmahTargetTests\given_target_with_loglevelastype_not_set_log_event_with_exception_when_logging_error.cs" />
+    <Compile Include="ElmahTargetTests\given_target_with_loglevelastype_turned_on.cs" />
+    <Compile Include="ElmahTargetTests\given_target_with_loglevelastype_turned_on_and_log_event_and_no_exception_when_logging_info.cs" />
+    <Compile Include="ElmahTargetTests\given_target_with_loglevelastype_turned_on_and_log_event_with_exception_when_logging_error.cs" />
     <Compile Include="ErrorLogExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulatedHttpRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

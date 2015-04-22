@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/NLog/NLog-Contrib</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Integrates NLog with ELMAH</description>
-    <releaseNotes>Community contributed custom target for NLog.</releaseNotes>
+    <releaseNotes>Added the ability to capture the current HttpContext when logging within a web application.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>nlog target elmah</tags>
     <dependencies>
