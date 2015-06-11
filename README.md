@@ -1,7 +1,7 @@
 NLog Contrib
 ============
 
-Community contributions to NLog.
+Community contributions to [NLog](https://github.com/NLog/NLog/).
 
 ##Adding a new target
 
