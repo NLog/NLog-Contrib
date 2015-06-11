@@ -3,6 +3,13 @@ NLog Contrib
 
 Community contributions to [NLog](https://github.com/NLog/NLog/).
 
+* NLog Contrib: 
+[![Version](https://img.shields.io/nuget/v/NLog.Contrib.svg)](https://www.nuget.org/packages/NLog.Contrib)
+* NLog.ManualFlush:
+[![Version](https://img.shields.io/nuget/v/NLog.ManualFlush.svg)](https://www.nuget.org/packages/NLog.ManualFlush)
+* NLog.ETW:
+[![Version](https://img.shields.io/nuget/v/NLog.ETW.svg)](https://www.nuget.org/packages/NLog.ETW)
+
 ##Adding a new target
 
 It’s easy. Just put the target in a DLL and reference it from the the config file using the clause as described here.
