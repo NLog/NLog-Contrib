@@ -5,10 +5,13 @@ Community contributions to [NLog](https://github.com/NLog/NLog/).
 
 * NLog Contrib: 
 [![Version](https://img.shields.io/nuget/v/NLog.Contrib.svg)](https://www.nuget.org/packages/NLog.Contrib)
+[![AppVeyor](https://img.shields.io/appveyor/ci/Xharze/nlog-Contrib/master.svg)](https://ci.appveyor.com/project/Xharze/nlog-Contrib/branch/master)
 * NLog.ManualFlush:
 [![Version](https://img.shields.io/nuget/v/NLog.ManualFlush.svg)](https://www.nuget.org/packages/NLog.ManualFlush)
+
 * NLog.ETW:
 [![Version](https://img.shields.io/nuget/v/NLog.ETW.svg)](https://www.nuget.org/packages/NLog.ETW)
+
 
 ##Adding a new target
 
