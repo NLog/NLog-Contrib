@@ -16,6 +16,8 @@ The repository contains:
 
 How to use
 ===
+.Net 4.0 is required. 
+
 For NLog 4.0+, just install the nuget package.
 
 For older NLog versions, check the [NLog wiki](https://github.com/NLog/NLog/wiki/Extending%20NLog#how-to-use-the-custom-target--layout-renderer).
